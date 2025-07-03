@@ -220,7 +220,7 @@ parking-lot-lld/
   - Prioritizes **HANDICAPPED** spots
 
 
-## 🅿️ Parking Spot Types
+## Parking Spot Types
 
 - `SMALL` – for motorcycles
 - `MEDIUM` – for cars
