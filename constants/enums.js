@@ -1,0 +1,27 @@
+const VEHICLE_TYPE = Object.freeze({
+  MOTORCYCLE: 'MOTORCYCLE',
+  CAR: 'CAR',
+  ELECTRIC: 'ELECTRIC',
+  BUS: 'BUS',
+});
+
+const SPOT_TYPE = Object.freeze({
+  SMALL: 'SMALL',
+  MEDIUM: 'MEDIUM',
+  LARGE: 'LARGE',
+  HANDICAPPED: 'HANDICAPPED',
+  CHARGING: 'CHARGING',
+});
+
+const VEHICLE_FEE_RATE = Object.freeze({
+  [VEHICLE_TYPE.MOTORCYCLE]: 10,
+  [VEHICLE_TYPE.CAR]: 20,
+  [VEHICLE_TYPE.ELECTRIC]: 25,
+  [VEHICLE_TYPE.BUS]: 30,
+});
+
+module.exports = {
+  VEHICLE_TYPE,
+  SPOT_TYPE,
+  VEHICLE_FEE_RATE,
+};
