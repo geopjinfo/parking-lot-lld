@@ -1,11 +1,10 @@
 const Car = require('./Car');
 const { VEHICLE_TYPE } = require('../../constants/enums');
 
+/** A Car that reports type ELECTRIC and always wants a charging spot. */
 class ElectricCar extends Car {
-  constructor(plate, isDisabled = false) {
-    super(plate, isDisabled);
-    this.type = VEHICLE_TYPE.ELECTRIC;
-    this.needsCharging = true;
+  constructor(plate, opts = {}) {
+    super(plate, { ...opts, needsCharging: true }, VEHICLE_TYPE.ELECTRIC);
   }
 }
 

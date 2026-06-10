@@ -1,7 +1,13 @@
-let counter = 1;
+/** Hands out sequential ids like T-1, T-2. Each instance keeps its own count. */
+class IDGenerator {
+  constructor(prefix = 'T-') {
+    this.prefix = prefix;
+    this.counter = 0;
+  }
 
-function generateId() {
-  return `T-${counter++}`;
+  next() {
+    return `${this.prefix}${++this.counter}`;
+  }
 }
 
-module.exports = generateId;
+module.exports = IDGenerator;
