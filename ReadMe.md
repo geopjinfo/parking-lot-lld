@@ -352,11 +352,19 @@ lot.on('availabilityChanged', ({ floor, type, available, total }) => {
 If this were backed by a database, the tables would look something like:
 
 ```
+parking_lots(id, name)
+floors(id, lot_id -> parking_lots.id, floor_number)
+spots(id, floor_id -> floors.id, type, is_occupied)
 vehicles(id, plate, type, is_disabled, needs_charging)
-floors(id, lot_id, floor_number)
-spots(id, floor_id, type, is_occupied)
-tickets(id, vehicle_id, spot_id, start_time, end_time, fee)
+tickets(id, vehicle_id -> vehicles.id, spot_id -> spots.id, start_time, end_time, fee)
 ```
+
+- `parking_lots → floors → spots` is the physical hierarchy (one lot, many
+  floors, many spots each).
+- A `ticket` is the parking transaction: it links a vehicle to the spot it took,
+  with entry/exit times and the fee charged on exit.
+- An index on `spots(floor_id, type, is_occupied)` would back the same fast
+  "next free spot of type T" lookup the in-memory free-lists give today.
 
 (Not built — it's in-memory only — but the classes map one-to-one onto these tables.)
 
